@@ -1,9 +1,12 @@
 /* My style */
+@mixin set-margins($left, $right){
+    margin-left: $left;
+    margin-right: $right;
+}
+
 body{
-    margin-left: 10px;
-    margin-right: 10px;
-}  
+    @include set-margins(10px,10px);
+}
 div{
-    margin-left: 15px;
-    margin-right: 15px; 
+    @include set-margins(15px,15px);
 }
