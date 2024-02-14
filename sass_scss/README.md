@@ -26,8 +26,9 @@ Welcome to the Sassy Stylesheets (Sass) project! Sass is a popular CSS preproces
 
 ## Installation
 
-Before using Sass, you need to install it. You can do this using npm:
+Before using Sass, you need to install it. You can do this using npm or with apt package manager:
 
 ```bash
 npm install -g sass
+sudo apt install ruby-sass
 ```
