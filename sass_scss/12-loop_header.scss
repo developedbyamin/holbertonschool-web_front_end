@@ -1,0 +1,7 @@
+/* my style */
+
+@for $i from 0 through 5{
+    .h#{$i}{
+        font-size: #{$i+1}px;
+    }
+}

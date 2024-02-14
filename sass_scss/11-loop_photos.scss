@@ -1,0 +1,8 @@
+/* All names */
+@import "../sass_scss/list-names.scss";
+@each $name in $list-names{
+    $class-name: 'photo-' + $name;
+    #{$class-name}{
+        background: url("../sass_scss/photos/#{$name}.jpg") no-repeat;
+    }
+}
