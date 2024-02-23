@@ -529,6 +529,12 @@ html {
     padding: 10rem 40rem 2rem 0;
   }
   
+  /* Section Latest news ============================= */
+  
+  .section-latest-news .row{
+    flex-direction: row-reverse;
+  }
+
   /*** 4. CARD ***/
   
   /* Card (all styles)
@@ -538,11 +544,7 @@ html {
     color: var(--color-primary);
   }
 
-  /* Section Latest news ============================= */
-  
-  .section-latest-news .row{
-    flex-direction: row-reverse;
-  }
+
 
   /* Card WORK
       ============================= */
