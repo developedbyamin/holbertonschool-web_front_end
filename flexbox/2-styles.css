@@ -537,10 +537,13 @@ html {
   .card-category {
     color: var(--color-primary);
   }
+
   /* Section Latest news ============================= */
+  
   .section-latest-news .row{
     flex-direction: row-reverse;
   }
+
   /* Card WORK
       ============================= */
   
