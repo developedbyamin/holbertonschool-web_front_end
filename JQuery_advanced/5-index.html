@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Task 5</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <style>
+        /* CSS for the delete cell */
+        .delete-cell {
+            background-color: orange;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="application/javascript">
+        // Define function createFamilyTree
+        function createFamilyTree() {
+            // Append an empty table to the body
+            $('body').append('<table>' +
+                '<thead>' +
+                '<tr>' +
+                '<th>Firstname</th>' +
+                '<th>Lastname</th>' +
+                '<th></th>' + // Empty cell for delete button
+                '</tr>' +
+                '</thead>' +
+                '<tbody></tbody>' +
+                '</table>');
+        }
+
+        // Define function addNewMember
+        function addNewMember(firstName, lastName) {
+            // Append a new row with three cells to the table body
+            $('tbody').append('<tr>' +
+                '<td>' + firstName + '</td>' +
+                '<td>' + lastName + '</td>' +
+                '<td class="delete-cell">(x)</td>' +
+                '</tr>');
+        }
+
+        // Call createFamilyTree function
+        createFamilyTree();
+
+        // Generate a fake table using addNewMember
+        addNewMember('Guillaume', 'Salva');
+        addNewMember('Arielle', 'Snizt');
+        addNewMember('Fanette', 'Snizt');
+        addNewMember('Gerard', 'Snizt');
+        addNewMember('Victor', 'Salva');
+
+        // Attach click event to delete cells
+        $(document).on('click', '.delete-cell', function() {
+            $(this).closest('tr').remove(); // Remove the closest parent <tr> element
+        });
+    </script>
+
+</body>
+
+</html>
