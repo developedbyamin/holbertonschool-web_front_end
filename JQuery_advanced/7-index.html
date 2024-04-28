@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia Search</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <script>
+        function createSearchForm(){
+            // Create form
+            const form = document.createElement('form');
+            const inputText = document.createElement('input');
+            const submitButton = document.createElement('input');
+            const ul = document.createElement('ul');
+
+            // Set attributes for input elements
+            inputText.type = 'text';
+            submitButton.type = 'submit';
+            submitButton.value = 'Submit';
+
+            // Append input elements to form
+            form.appendChild(inputText);
+            form.appendChild(submitButton);
+
+            // Append form and ul to body
+            document.body.appendChild(form);
+            document.body.appendChild(ul);
+
+            // Add event listener to form submit button
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+                const searchText = inputText.value;
+                queryWikipedia(searchText); // Call queryWikipedia function with search text
+            });
+        }
+
+        function addNewArticle(id, title, snippet) {
+            // Create li element
+            const li = document.createElement('li');
+
+            // Create p elements for title and snippet
+            const titlePara = document.createElement('p');
+            const snippetPara = document.createElement('p');
+
+            // Create span elements for ID and title
+            const idSpan = document.createElement('span');
+            const titleSpan = document.createElement('span');
+            const titleBold = document.createElement('b');
+
+            // Set text content for ID span
+            idSpan.textContent = id;
+
+            // Set text content for title span (with HTML escaped)
+            titleBold.textContent = title;
+            titleSpan.appendChild(titleBold);
+
+            // Set text content for snippet paragraph (with HTML escaped)
+            snippetPara.innerHTML = snippet;
+
+            // Append ID span and title span to title paragraph
+            titlePara.appendChild(idSpan);
+            titlePara.appendChild(document.createTextNode(' ')); // Add space between ID and title
+            titlePara.appendChild(titleSpan);
+
+            // Append paragraphs to li element
+            li.appendChild(titlePara);
+            li.appendChild(snippetPara);
+
+            // Append li to ul
+            document.querySelector('ul').appendChild(li);
+        }
+
+        function queryWikipedia(search) {
+            $.ajax({
+                url: 'https://en.wikipedia.org/w/api.php',
+                data: {
+                    action: 'query',
+                    list: 'search',
+                    srsearch: search,
+                    format: 'json'
+                },
+                dataType: 'jsonp',
+                success: function(response) {
+                    response.query.search.forEach(function(result) {
+                        addNewArticle(result.pageid, result.title, result.snippet);
+                    });
+                },
+                error: function() {
+                    console.error('Error fetching data from Wikipedia API');
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            createSearchForm(); // Call createSearchForm when the page loads
+        });
+    </script>
+</body>
+</html>

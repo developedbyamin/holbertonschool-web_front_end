@@ -37,12 +37,13 @@
                                 '</tbody>' +
                             '</table>';
             
-            // Append the table HTML to the body using jQuery
-            $('body').append(tableHTML);
+            var container = document.createElement('div');
+            container.innerHTML = tableHTML;
+            document.body.appendChild(container.firstChild);
         }
 
         // Call createFamilyTree function when the page loads
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded',function(){
             createFamilyTree();
         });
     </script>

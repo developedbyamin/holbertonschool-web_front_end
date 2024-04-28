@@ -83,7 +83,7 @@ function createForm() {
 
   // Select the table and insert the form before it
   const table = document.querySelector('table');
-  table.before(form);
+  table.after(form);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();

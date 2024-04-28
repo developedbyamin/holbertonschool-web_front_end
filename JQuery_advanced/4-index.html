@@ -9,7 +9,7 @@
 
 <body>
 
-    <script type="application/javascript">
+    <script>
         function createFamilyTree() {
             $('body').append($('<table>'));
 
@@ -22,15 +22,12 @@
             ));
         }
 
-        $(document).ready(function() {
-            createFamilyTree();
-        });
-        
         function replaceFamilyTree(){
             $('tbody').html(
-                $('<tr>').append($('<td>').text('Gerard')).append($('<td>').text('Bonissa')),
+                $('<tr>').append($('<td>').text('Gerard')).append($('<td>').text('Bonissa'))
             );
         }
+
         $(document).ready(function() {
             createFamilyTree();
             replaceFamilyTree();
